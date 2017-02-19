@@ -11,14 +11,14 @@ import java.util.Iterator;
 
 import javax.swing.JTextArea;
 
-import brian.Task2.RoadSystem.algorithms.Dictionary;
-import brian.Task2.RoadSystem.algorithms.QuadTree;
-import brian.Task2.RoadSystem.algorithms.RoadGraph;
-import brian.Task2.RoadSystem.structs.Location;
-import brian.Task2.RoadSystem.structs.Road;
-import brian.Task2.RoadSystem.structs.RoadNode;
-import brian.Task2.RoadSystem.structs.Segment;
-import brian.Task2.RoadSystem.structs.Vector;
+import brian.algorithm.AucklandRoadSystem.algorithms.Dictionary;
+import brian.algorithm.AucklandRoadSystem.algorithms.QuadTree;
+import brian.algorithm.AucklandRoadSystem.algorithms.RoadGraph;
+import brian.algorithm.AucklandRoadSystem.structs.Location;
+import brian.algorithm.AucklandRoadSystem.structs.Road;
+import brian.algorithm.AucklandRoadSystem.structs.RoadNode;
+import brian.algorithm.AucklandRoadSystem.structs.Segment;
+import brian.algorithm.AucklandRoadSystem.structs.Vector;
 import brian.algorithm.AucklandRoadSystem.utils.DataLoader;
 import brian.algorithm.AucklandRoadSystem.utils.DataLoaderListener;
 import brian.algorithm.AucklandRoadSystem.utils.MoveManager;

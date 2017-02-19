@@ -6,11 +6,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import brian.Task2.RoadSystem.algorithms.Dictionary;
-import brian.Task2.RoadSystem.algorithms.RoadGraph;
-import brian.Task2.RoadSystem.structs.Location;
-import brian.Task2.RoadSystem.structs.Road;
-import brian.Task2.RoadSystem.structs.Segment;
+import brian.algorithm.AucklandRoadSystem.algorithms.Dictionary;
+import brian.algorithm.AucklandRoadSystem.algorithms.RoadGraph;
+import brian.algorithm.AucklandRoadSystem.structs.Location;
+import brian.algorithm.AucklandRoadSystem.structs.Road;
+import brian.algorithm.AucklandRoadSystem.structs.Segment;
 
 public class DataLoader {
 	public static final void loadFiles(DataLoaderListener listener, File nodes, File roads, File segments, File polygons) {

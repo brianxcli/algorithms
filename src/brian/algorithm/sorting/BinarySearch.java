@@ -1,6 +1,6 @@
 package brian.algorithm.sorting;
 
-import brian.algorithm.structures.BinarySearchTree;
+import brian.algorithm.structures.trees.BinarySearchTree;
 
 public class BinarySearch {
 	private static int[] test1 = {5, 13, 2, 25, 7, 17, 5, 20, 8, 4, 756, 113, -5, 0, 923, 25, 8};

@@ -30,7 +30,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.text.DefaultCaret;
 
-import brian.Task2.RoadSystem.structs.Vector;
+import brian.algorithm.AucklandRoadSystem.structs.Vector;
 
 /**
  * This is a template GUI that you can use for your mapping program. It is an

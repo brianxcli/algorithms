@@ -3,7 +3,7 @@ package brian.algorithm.AucklandRoadSystem.algorithms;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import brian.Task2.RoadSystem.structs.Location;
+import brian.algorithm.AucklandRoadSystem.structs.Location;
 
 public class QuadTree {
 	private static final double NEAREST_CLICK = 10.0;

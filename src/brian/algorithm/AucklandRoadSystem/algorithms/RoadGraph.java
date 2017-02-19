@@ -6,10 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import brian.Task2.RoadSystem.structs.Location;
-import brian.Task2.RoadSystem.structs.RoadNode;
-import brian.Task2.RoadSystem.structs.Road;
-import brian.Task2.RoadSystem.structs.Segment;
+import brian.algorithm.AucklandRoadSystem.structs.*;
 
 public class RoadGraph {
 	/**

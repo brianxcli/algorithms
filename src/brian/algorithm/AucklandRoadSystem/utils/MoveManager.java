@@ -4,8 +4,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseWheelEvent;
 
-import brian.Task2.RoadSystem.structs.Location;
-import brian.Task2.RoadSystem.structs.Vector;
+import brian.algorithm.AucklandRoadSystem.structs.Location;
+import brian.algorithm.AucklandRoadSystem.structs.Vector;
 
 public class MoveManager {
 	public static final int ZOOMLV_1 = 0;

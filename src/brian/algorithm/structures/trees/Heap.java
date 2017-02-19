@@ -1,4 +1,4 @@
-package brian.algorithm.structures;
+package brian.algorithm.structures.trees;
 
 import brian.algorithm.exceptions.HeapInitilizationException;
 
