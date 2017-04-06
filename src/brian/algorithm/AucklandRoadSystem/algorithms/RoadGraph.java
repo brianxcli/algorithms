@@ -26,6 +26,8 @@ public class RoadGraph {
 	
 	private HashMap<String, Road> roadNameMap;
 	
+	private HashMap<Long, Polygon> polygonMap;
+	
 	private static RoadGraph ins = new RoadGraph();
 	
 	private RoadGraph() {
@@ -33,6 +35,7 @@ public class RoadGraph {
 		graph = new HashMap<Long, ArrayList<RoadNode>>();
 		roadIdMap = new HashMap<Long, Road>();
 		roadNameMap = new HashMap<String, Road>();
+		polygonMap = new HashMap<Long, Polygon>();
 	}
 	
 	public static RoadGraph getInstance() {
@@ -96,6 +99,14 @@ public class RoadGraph {
 	
 	public boolean containsRoad(String name) {
 		return roadNameMap.containsKey(name);
+	}
+	
+	public void addPolygon(long id, Polygon polygon) {
+		polygonMap.put(id, polygon);
+	}
+	
+	public HashMap<Long, Polygon> getPolygons() {
+		return polygonMap;
 	}
 	
 	/**
@@ -164,11 +175,15 @@ public class RoadGraph {
 	 */
 	public void draw(Graphics g, double latScale, String roadPrefix, int nodeRadius, long seletedNodeId) {
 		Iterator<RoadNode> nodes = nodeMap.values().iterator();
-		
 		while (nodes.hasNext()) {
-			// nodes.next().draw(g, latScale, roadPrefix, nodeRadius, seletedNodeId);
 			RoadNode node = nodes.next();
 			node.draw(g, latScale, roadPrefix, nodeRadius, seletedNodeId);
+		}
+		
+		Iterator<Polygon> poly = polygonMap.values().iterator();
+		while (poly.hasNext()) {
+			Polygon polygon = poly.next();
+			polygon.draw(g, latScale);
 		}
 	}
 }

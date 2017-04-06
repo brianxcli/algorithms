@@ -43,12 +43,17 @@ public class MapWindow extends IGUI implements DataLoaderListener {
 	
 	private double calculateScale(int width) {
 		return (width / Location.getMapLatSpanKm()) *
-			MoveManager.getSelf().getPixelsPerKM();
+				moveManager.getPixelsPerKM();
 	}
 	
+	/**
+	 * Confirm the radius on the map to represent the nodes.
+	 * Nodes are not drawn if the zoom level is 1 or 2.
+	 * @return node radius to draw in pixels
+	 */
 	private int getNodeRadius() {
 		// we define the current zoom level as the node radius
-		int level = MoveManager.getSelf().getZoomLevel();
+		int level = moveManager.getZoomLevel();
 		int radius = 0;
 		switch (level) { 
 			case MoveManager.ZOOMLV_1:
@@ -80,11 +85,10 @@ public class MapWindow extends IGUI implements DataLoaderListener {
 		
 		int x = e.getX();
 		int y = e.getY();
-		System.out.println("click:" + " x=" + x + " y=" + y);
+		
 		Vector vector = moveManager.getCurrentMoveVector();
 		// Point of current click position
 		Point point = new Point(-vector.dx + x, -vector.dy + y);
-		System.out.println("touched point:" + point);
 	
 		selectedNodeId = QuadTree.getInstance().searchNodeId(point);
 		RoadNode node = RoadGraph.getInstance().getNode(selectedNodeId);	
@@ -112,13 +116,13 @@ public class MapWindow extends IGUI implements DataLoaderListener {
 	
 	@Override
 	protected void onMouseDragged(Vector vector) {
-		MoveManager.getSelf().moveByMouseDrag(vector);
+		moveManager.moveByMouseDrag(vector);
 	}
 
 	@Override
 	protected void onMouseWheelMoved(MouseWheelEvent e) {
 		Dimension dimen = getFrameSize();
-		MoveManager.getSelf().moveByMouseWheel(e, dimen.height);
+		moveManager.moveByMouseWheel(e, dimen.height);
 	}
 	
 	@Override
@@ -157,22 +161,21 @@ public class MapWindow extends IGUI implements DataLoaderListener {
 
 	private void move(Move move) {
 		Dimension dimen = getFrameSize();
-		MoveManager.getSelf().move(move.ordinal(), dimen.width, dimen.height);
+		moveManager.move(move.ordinal(), dimen.width, dimen.height);
 	}
 	
 	private void zoom(Move move) {
 		boolean oneUpLevel = (move == Move.ZOOM_IN);
-		MoveManager manager = MoveManager.getSelf();
-		int level = manager.getZoomLevel();
+		int level = moveManager.getZoomLevel();
 		
 		Dimension dimen = getFrameSize();
 		if (oneUpLevel && level == MoveManager.ZOOMLV_1) {
 			// zoom in from level 1 to level 2
 			// shows the Auckland City center			
 			double scale = calculateScale(dimen.width);
-			manager.zoomToAucklandCenter(scale, dimen);
+			moveManager.zoomToAucklandCenter(scale, dimen);
 		} else {
-			manager.zoom(oneUpLevel, dimen);
+			moveManager.zoom(oneUpLevel, dimen);
 		}
 	
 		rebuildQuadtreeIfNeeded();

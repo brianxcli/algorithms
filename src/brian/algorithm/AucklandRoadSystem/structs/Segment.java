@@ -98,10 +98,10 @@ public class Segment {
 				g.setColor(Color.RED);
 			}
 			
-			if (zoomLevel >= MoveManager.ZOOMLV_4) {
-				char[] id = String.valueOf(start.id).toCharArray();
-				g.drawChars(id, 0, id.length, pStart.x - nodeRadius, pStart.y - nodeRadius - 4);
-			}
+//			if (zoomLevel >= MoveManager.ZOOMLV_4) {
+//				char[] id = String.valueOf(start.id).toCharArray();
+//				g.drawChars(id, 0, id.length, pStart.x - nodeRadius, pStart.y - nodeRadius - 4);
+//			}
 			
 			g.fillArc(pStart.x - nodeRadius, pStart.y - nodeRadius, diameter, diameter, 0, 360);
 			
@@ -113,10 +113,10 @@ public class Segment {
 					g.setColor(Color.RED);
 				}
 				
-				if (zoomLevel >= MoveManager.ZOOMLV_4) {
-					char[] id = String.valueOf(end.id).toCharArray();
-					g.drawChars(id, 0, id.length, pEnd.x - nodeRadius, pEnd.y - nodeRadius - 4);
-				}
+//				if (zoomLevel >= MoveManager.ZOOMLV_4) {
+//					char[] id = String.valueOf(end.id).toCharArray();
+//					g.drawChars(id, 0, id.length, pEnd.x - nodeRadius, pEnd.y - nodeRadius - 4);
+//				}
 				
 				g.fillArc(pEnd.x - nodeRadius, pEnd.y - nodeRadius, diameter, diameter, 0, 360);
 			}

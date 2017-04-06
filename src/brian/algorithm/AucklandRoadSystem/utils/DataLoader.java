@@ -6,10 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 import brian.algorithm.AucklandRoadSystem.algorithms.Dictionary;
 import brian.algorithm.AucklandRoadSystem.algorithms.RoadGraph;
 import brian.algorithm.AucklandRoadSystem.structs.Location;
+import brian.algorithm.AucklandRoadSystem.structs.Polygon;
 import brian.algorithm.AucklandRoadSystem.structs.Road;
 import brian.algorithm.AucklandRoadSystem.structs.Segment;
 
@@ -138,7 +142,57 @@ public class DataLoader {
 	}
 	
 	private static final void loadPolygons(File file) {
+		RoadGraph graph = RoadGraph.getInstance();
+		Scanner scanner = null;
+		int id = 0;
 		
+		try {
+			scanner = new Scanner(file);
+			
+			while (scanner.hasNextLine() && scanner.nextLine().equals("[POLYGON]")) {
+				id++;
+				Polygon poly = new Polygon();
+				
+				String read = null;
+				while (!(read = scanner.nextLine()).equals("[END]")) {
+					String[] attrs = read.split("=");
+					if (attrs[0].equals("Type")) {
+						// poly.type = Integer.valueOf(attrs[1]);
+						poly.type = Integer.parseInt(attrs[1].substring(2), 16);
+					} else if (attrs[0].equals("Label")) {
+						poly.label = attrs[1];
+					} else if (attrs[0].equals("EndLevel")) {
+						poly.endLevel = Integer.valueOf(attrs[1]);
+					} else if (attrs[0].equals("CityIdx")) {
+						poly.cityIndex = Integer.valueOf(attrs[1]);
+					} else if (attrs[0].equals("Data0")) {
+						poly.data = getLocationsFromString(attrs[1]);
+					}
+				}
+				graph.addPolygon(id, poly);
+				scanner.nextLine();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (scanner != null) {
+				scanner.close();
+			}
+		}
+	}
+	
+	private static ArrayList<Location> getLocationsFromString(String data) {
+		ArrayList<Location> list = new ArrayList<Location>();
+		String[] locStrs = data.split(",");
+		
+		for (int i = 0; i < locStrs.length; i++) {
+			double lat = Double.valueOf(locStrs[i].substring(1));
+			i++;
+			double lon = Double.valueOf(locStrs[i].substring(0, (locStrs[i].length() - 1)));
+			list.add(Location.newFromLatLon(lat, lon));
+		}
+		
+		return list;
 	}
 	
 	private static void handleReaderClose(Reader reader) {
