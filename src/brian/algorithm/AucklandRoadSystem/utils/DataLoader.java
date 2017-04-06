@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 
 import brian.algorithm.AucklandRoadSystem.algorithms.Dictionary;
 import brian.algorithm.AucklandRoadSystem.algorithms.RoadGraph;
@@ -53,15 +54,7 @@ public class DataLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if (reader != null) {
-				try {
-					reader.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} finally {
-					reader = null;
-				}
-			}
+			handleReaderClose(reader);
 		}
 	}
 	
@@ -99,15 +92,7 @@ public class DataLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if (reader != null) {
-				try {
-					reader.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} finally {
-					reader = null;
-				}
-			}
+			handleReaderClose(reader);
 		}
 	}
 	
@@ -148,20 +133,24 @@ public class DataLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if (reader != null) {
-				try {
-					reader.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} finally {
-					reader = null;
-				}
-			}
+			handleReaderClose(reader);
 		}
 	}
 	
 	private static final void loadPolygons(File file) {
 		
+	}
+	
+	private static void handleReaderClose(Reader reader) {
+		if (reader != null) {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				reader = null;
+			}
+		}
 	}
 }
 
