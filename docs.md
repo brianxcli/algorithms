@@ -438,20 +438,6 @@ Agora SDK 支持通话过程中在客户端进行录音。该方法录制频道�
 
 * 请参考 [视频采集旋转](https://docs.agora.io/cn/Interactive%20Broadcast/rotation_guide_android?platform=Android)。文档里包含了一些图示，帮助开发者感性理解旋转方向的原理
 
-* 设置视频格式时(setVideoDecoderConfiguration)，有一个参数代表的是屏幕旋转的配置，共3个选项：ORIENTATION_MODE_ADAPTIVE，ORIENTATION_MODE_FIXED_LANDSCAPE， ORIENTATION_MODE_FIXED_PORTRAIT。 这个配置主要是为了解决发送端、接收端和CDN端如何处理图像显示方向的问题。
-
-* 发送和接收端orientation的设置不同，推流到CDN，设备支持屏幕旋转等，增加了理解这几种旋转模式的难度。
-
-本文采用不同的角度，从简单到复杂的顺序说明三种模式的处理方式
-
-|情景|Portrait|Landscape|Adaptive|
-|:--|:--|:--|:--|
-|设备到设备，设备均关闭转屏，<br>发送接收端旋转模式相同||||
-|||||
-
-
-### API参考
-
 ## 实现4人以上视频通话
 * 请参阅demo https://github.com/AgoraIO/Advanced-Video/tree/master/Large-Group-Video-Chat
 * 请参考 [实现七人以上视频通话](https://docs.agora.io/cn/Interactive%20Broadcast/seventeen_people_android?platform=Android)
