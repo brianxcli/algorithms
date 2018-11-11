@@ -396,7 +396,9 @@ setVideoEncoderConfiguration() 方法用来设置视频相关的属性，比如�
 请参考 [自定义视频源和渲染器](https://docs.agora.io/cn/Interactive%20Broadcast/custom_video_android?platform=Android)
 
 ## 进行屏幕共享
-
+屏幕共享是先通过 MediaProjection/VirtualDisplay 拿到屏幕数据。然后通过 pushExternalVideoFrame 接口给到 Agora SDK，在进频道之前要先设置 setExternalVideoSource
+### 注意事项
+* 具体细节请参考 [demo](https://github.com/AgoraIO/Advanced-Video/tree/master/Screensharing/Agora-Screen-Sharing-Android)
 
 ## 推流到CDN
 请参考 [推流到CDN](https://docs.agora.io/cn/Interactive%20Broadcast/push_stream_android2.0?platform=Android)
@@ -443,8 +445,6 @@ Agora SDK 支持通话过程中在客户端进行录音。该方法录制频道�
 * 请参考 [实现七人以上视频通话](https://docs.agora.io/cn/Interactive%20Broadcast/seventeen_people_android?platform=Android)
 
 ## 移动端、桌面端、web端互通
-### 实现方法
-
 ### 注意事项
 * 初始化配置详情可参考[官方文档](https://docs.agora.io/cn/Interactive%20Broadcast/API%20Reference/web/interfaces/agorartc.clientconfig.html)
 
