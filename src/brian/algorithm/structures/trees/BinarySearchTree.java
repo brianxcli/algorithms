@@ -17,6 +17,38 @@ public class BinarySearchTree {
 		public Node left;
 		public Node right;
 		public int key;
+		
+		public boolean hasParent() {
+			return parent != null;
+		}
+		
+		public Node parent() {
+			return parent;
+		}
+		
+		public Node left() {
+			return left;
+		}
+		
+		public Node right() {
+			return right;
+		}
+		
+		public boolean hasLeft() {
+			return left != null;
+		}
+		
+		public boolean hasRight() {
+			return right != null;
+		}
+		
+		public boolean isLeft() {
+			return hasParent() && (parent.left == this);
+		}
+		
+		public boolean isRight() {
+			return hasParent() && (parent.right == this);
+		}
 	}
 	
 	public Node insert(int value) {
@@ -170,6 +202,30 @@ public class BinarySearchTree {
 		inOrderTreeWalk(node.left);
 		dumpNode(node);
 		inOrderTreeWalk(node.right);
+	}
+	
+	public void inOrderWalkNonRecursive() {
+		Node current = getMinimum(root);
+		
+		while (true) {	
+			dumpNode(current);
+			
+			if (current.hasRight()) {
+				current = getMinimum(current.right());
+			} else {
+				while (current.hasParent() && current.isRight()) {
+					current = current.parent();
+				}
+				
+				if (!current.hasParent()) {
+					return;
+				}
+				
+				if (current.isLeft()) {
+					current = current.parent();
+				}
+			}
+		}
 	}
 	
 	private void dumpNode(Node node) {
