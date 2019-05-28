@@ -138,15 +138,24 @@ public class Heap {
 	
 	public void sort() {
 		int size = heapSize;
-		for (int i = size; i >= 2; i--) {
-			// Change the currently largest element to the last position
-			// of the heap, and then decrease the sorting heap.
-			// After that, remain heap property to ensure the next largest
-			// element is in the first position of heap.
-			swap(size, 1);
+
+		while (size >= 2) {
+			swap(1, size);
 			size--;
-			heapify(i, size);
+			
+			// heapify from node all the way down to 
+			// one of the leaves along one shortest path
+			heapify(1, size);
 		}
+	}
+	
+	public void dump() {
+		System.out.println();
+		for (int i = 1; i <= heapSize; i++) {
+			System.out.print(heap[i] + " ");
+		}
+		
+		System.out.println();
 	}
 }
 
